@@ -1,0 +1,16 @@
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\Bookie.csproj.AssemblyReference.cache
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\Bookie.GeneratedMSBuildEditorConfig.editorconfig
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\Bookie.AssemblyInfoInputs.cache
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\Bookie.AssemblyInfo.cs
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\Bookie.csproj.CoreCompileInputs.cache
+D:\pjXamarin\DoAn\Bookie\Bookie\bin\Debug\netstandard2.0\Bookie.deps.json
+D:\pjXamarin\DoAn\Bookie\Bookie\bin\Debug\netstandard2.0\Bookie.dll
+D:\pjXamarin\DoAn\Bookie\Bookie\bin\Debug\netstandard2.0\ref\Bookie.dll
+D:\pjXamarin\DoAn\Bookie\Bookie\bin\Debug\netstandard2.0\Bookie.pdb
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\XamlC.stamp
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\Bookie.dll
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\ref\Bookie.dll
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\Bookie.pdb
+D:\pjXamarin\DoAn\Bookie\Bookie\obj\Debug\netstandard2.0\Views\RegisterPage.xaml.g.cs

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bookie.Views.RegisterPage"
+             xmlns:local="clr-namespace:Bookie.Custom"
+             BackgroundColor="#FBFBFB"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid ColumnSpacing="0" 
+                  BackgroundColor="#EFEFEF">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0" 
+                       Grid.Column="0"
+                       Source="logoApp.png"/>
+                <Label Grid.Row="0" 
+                       Grid.Column="1" 
+                       Text="BOOKIE" 
+                       HorizontalOptions="StartAndExpand" 
+                       VerticalOptions="CenterAndExpand" 
+                       FontSize="40" TextColor="Black" 
+                       FontAttributes="Bold"/>
+            </Grid>
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" 
+                       Grid.Column="0" 
+                       Grid.ColumnSpan="2" 
+                       TextColor="Black" 
+                       FontAttributes="Bold" 
+                       FontSize = "30" 
+                       Text="Create account" />
+                <StackLayout Grid.Row="1" 
+                             Grid.Column="0" 
+                             Grid.ColumnSpan="2">
+                    <local:myEntry Placeholder="Name"/>
+                    <local:myEntry Placeholder="Your email address"/>
+                    <local:myEntry IsPassword="True" 
+                                   Placeholder="Create a password"/>
+                    <local:myEntry IsPassword="True" 
+                                   Placeholder="Confirm password"/>
+                </StackLayout>
+                <CheckBox Color="Black" 
+                          HorizontalOptions="End" 
+                          Grid.Row="2" 
+                          Grid.Column="0"/>
+                <Label FontSize = "20" 
+                       Grid.Row="2" 
+                       Grid.Column="1" 
+                       Text="Show password"/>
+                <local:myButton Grid.Row="3" 
+                                Grid.Column="0" 
+                                Grid.ColumnSpan="2" 
+                                Text="Sign Up" 
+                                FontSize="30" 
+                                Padding="0,10,0,10" 
+                                BackgroundColor="#1269C8" 
+                                TextColor="White"/>
+                <Label Padding="0,12,0,0" 
+                       Grid.Row="4" Grid.Column="0" 
+                       Grid.ColumnSpan="2" 
+                       FontSize = "20" 
+                       Text="Already have an account?" 
+                       HorizontalOptions="CenterAndExpand"/>
+                <local:myButton x:Name="toLogin" 
+                                Grid.Row="5" 
+                                Grid.Column="0" 
+                                Grid.ColumnSpan="2" 
+                                BackgroundColor="#FBFBFB" 
+                                TextColor="Blue" 
+                                FontSize = "20" 
+                                Text="Sign in now"  
+                                HorizontalOptions="Center" 
+                                Clicked="toLogin_Clicked"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
