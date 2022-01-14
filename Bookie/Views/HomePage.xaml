@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bookie.Views.HomePage"
+    xmlns:custom="clr-namespace:Bookie.Custom"
+    BackgroundColor="#EFEFEF">
+    <Shell.SearchHandler>
+        <custom:BookearchHandler
+            x:Name="Search"
+            BackgroundColor="White"
+            Placeholder="Enter book name"
+            ShowsResults="true"
+            TextColor="Black"
+            PlaceholderColor="Gray"
+            DisplayMemberName="BookTitle">
+            <custom:BookearchHandler.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Padding="2"
+                        BorderColor="Gray">
+                        <Grid
+                            Padding="10"
+                            ColumnDefinitions="0.15*,0.85*"
+                            RowDefinitions="0.5*,0.5*">
+                            <Image
+                                Grid.RowSpan="2"
+                                Source="{Binding BookImg}"
+                                HeightRequest="40"
+                                WidthRequest="40" />
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                Text="{Binding BookTitle}"
+                                MaxLines="1"
+                                LineBreakMode="TailTruncation"
+                                FontAttributes="Bold"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                TextColor="Black"
+                                Text="{Binding BookPrice, StringFormat='${0}'}"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </custom:BookearchHandler.ItemTemplate>
+        </custom:BookearchHandler>
+    </Shell.SearchHandler>
+    <ContentPage.Content>
+        <ScrollView
+            HorizontalScrollBarVisibility="Never">
+            <StackLayout>
+                <Image
+                    Source="welcome" />
+                <CollectionView
+                    x:Name="Lst"
+                    IsGrouped="True"
+                    HeightRequest="1020">
+
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <StackLayout
+                                Margin="0,0,0,2">
+                                <Label
+                                    FontSize="20"
+                                    Padding="10,8,0,8"
+                                    TextTransform="Uppercase"
+                                    Text="{Binding Title}"
+                                    TextColor="White"
+                                    BackgroundColor="#1399FF" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Padding="5">
+                                <StackLayout
+                                    HeightRequest="150">
+                                    <CollectionView
+                                        SelectionMode="Single"
+                                        SelectionChanged="Book_SelectionChanged"
+                                        HeightRequest="150"
+                                        HorizontalScrollBarVisibility="Never"
+                                        ItemsSource="{Binding Books}"
+                                        BackgroundColor="White">
+
+                                        <CollectionView.ItemsLayout>
+                                            <LinearItemsLayout
+                                                Orientation="Horizontal"
+                                                ItemSpacing="3" />
+                                        </CollectionView.ItemsLayout>
+
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <FlexLayout
+                                                    Direction="Column"
+                                                    HeightRequest="150"
+                                                    WidthRequest="100"
+                                                    JustifyContent="Center"
+                                                    AlignItems="Center">
+
+                                                    <Image
+                                                        HeightRequest="150"
+                                                        Source="{Binding BookImg}"
+                                                        WidthRequest="100" />
+                                                </FlexLayout>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <CollectionView.GroupFooterTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label 
+                                    IsVisible="False"
+                                    Text="{Binding Title}"/>
+                                <ImageButton
+                                    Margin="0,2,0,15"
+                                    Source="seeAll"
+                                    HeightRequest="35" 
+                                    Clicked="ViewBooksGenre_Clicked"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.GroupFooterTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

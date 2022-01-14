@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:Bookie.Custom"
+    x:Class="Bookie.Views.ChangePWPage"
+    Shell.TabBarIsVisible="False"
+    BackgroundColor="#EFEFEF"
+    Title="Change Password">
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions="Center">
+            <Frame
+                CornerRadius="10"
+                Margin="10">
+                <StackLayout>
+                    <Label
+                        Text="Old password"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="Black" />
+                    <custom:myEntry
+                        IsPassword="True"
+                        TextColor="Black"
+                        PlaceholderColor="Gray"                       
+                        x:Name="oldPass" 
+                        Margin="0,0,0,10"/>
+                    <Label
+                        Text="New password"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="Black" />
+                    <custom:myEntry
+                        IsPassword="True"
+                        TextColor="Black"
+                        PlaceholderColor="Gray"
+                        x:Name="newPass"
+                        Margin="0,0,0,10" />
+                    <Label
+                        Text="Confirm new password"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="Black" />
+                    <custom:myEntry
+                        IsPassword="True"
+                        TextColor="Black"
+                        PlaceholderColor="Gray"
+                        x:Name="CFnewPass"
+                        Margin="0,0,0,30" />
+                    <FlexLayout
+                        Direction="Row"
+                        JustifyContent="SpaceEvenly">
+                        <custom:myButton
+                            Text="Cancel"
+                            TextColor="Black"
+                            FontSize="18"
+                            BorderWidth="0.8"
+                            BorderColor="Gray"
+                            BackgroundColor="#EFEFEF"
+                            CornerRadius="10"
+                            Padding="30,0,30,0"
+                            Clicked="myButton_Clicked"/>
+                        <custom:myButton
+                            Text="Update"
+                            TextColor="White"
+                            FontSize="18"
+                            CornerRadius="10"
+                            Padding="30,0,30,0"
+                            BackgroundColor="#1269C8" 
+                            Clicked="myButton_Clicked"/>
+                    </FlexLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:Bookie.Custom"
+    x:Class="Bookie.Views.UserDetailPage"
+    BackgroundColor="#EFEFEF"
+    Shell.TabBarIsVisible="False"
+    Title="User Profile">
+    <ContentPage.Content>
+        <StackLayout
+            Margin="5">
+            <Frame
+                HorizontalOptions="CenterAndExpand"
+                CornerRadius="100"
+                BorderColor="Black">
+                <Image
+                    Source="userIcon" />
+            </Frame>
+            <Label
+                x:Name="fName"
+                HorizontalOptions="CenterAndExpand"
+                FontAttributes="Bold"
+                TextColor="Black"
+                FontSize="20" />
+            <Frame
+                CornerRadius="10"
+                Margin="10">
+                <StackLayout>
+                    <Label
+                        Text="Email"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="Black" />
+                    <Label
+                        x:Name="email"
+                        TextColor="Black"
+                        FontSize="16" 
+                        Margin="0,0,0,10"/>
+                    <Label
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Text="Phone number" />
+                    <Label
+                        x:Name="phone"
+                        TextColor="Black"
+                        FontSize="16"
+                        Margin="0,0,0,10"/>
+                    <Label
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Text="Date of birth" />
+                    <Label
+                        x:Name="dob"
+                        TextColor="Black"
+                        FontSize="16"
+                        Margin="0,0,0,10"/>
+                    <Label
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Text="Gender" />
+                    <Label
+                        x:Name="gender"
+                        TextColor="Black"
+                        FontSize="16"
+                        Margin="0,0,0,30"/>
+                    <custom:myButton
+                        HorizontalOptions="Center"
+                        Text="Edit"
+                        TextColor="White"
+                        FontSize="18"
+                        CornerRadius="5"
+                        Padding="50,0,50,0"
+                        BackgroundColor="#1269C8"
+                        Clicked="EditProfile_Clicked" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

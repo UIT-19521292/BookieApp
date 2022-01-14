@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:Bookie.Custom"
+    x:Class="Bookie.Views.EditProfilePage"
+    Shell.TabBarIsVisible="False"
+    BackgroundColor="#EFEFEF"
+    Title="Edit Your Profile">
+    <ContentPage.Content>
+        <StackLayout
+            Margin="5">
+            <Frame
+                HorizontalOptions="CenterAndExpand"
+                CornerRadius="100"
+                BorderColor="Black">
+                <Image
+                    Source="userIcon" />
+            </Frame>
+            <Label
+                x:Name="fName"
+                HorizontalOptions="CenterAndExpand"
+                FontAttributes="Bold"
+                TextColor="Black"
+                FontSize="20" />
+            <Frame
+                CornerRadius="10"
+                Margin="10">
+                <StackLayout>
+                    <Label
+                        Text="Full name"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="Black" />
+                    <custom:myEntry
+                        Margin="0,0,0,10"
+                        TextColor="Black"
+                        PlaceholderColor="Gray"
+                        x:Name="username" 
+                        />
+                    <Label
+                        Text="Date of birth"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="Black" />
+                    <custom:myDatePicker
+                        Margin="0,0,0,10"
+                        x:Name="dob"
+                        Placeholder="Select date of birth"
+                        Image="cIcon"
+                        Format="dd/MM/yyyy" />
+                    <Label
+                        Text="Gender"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="Black" />
+                    <custom:myPicker
+                        Margin="0,0,0,30"
+                        x:Name="gender"
+                        Image="ddIcon"
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Select gender">
+                        <Picker.ItemsSource>
+                            <x:Array
+                                Type="{x:Type x:String}">
+                                <x:String>Male</x:String>
+                                <x:String>Female</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </custom:myPicker>
+                    <FlexLayout
+                        Direction="Row"
+                        JustifyContent="SpaceEvenly">
+                        <custom:myButton
+                            Text="Cancel"
+                            TextColor="Black"
+                            FontSize="18"
+                            BorderWidth="0.8"
+                            BorderColor="Gray"
+                            BackgroundColor="#EFEFEF"
+                            CornerRadius="10"
+                            Padding="30,0,30,0"
+                            Clicked="Button_Clicked" />
+                        <custom:myButton
+                            Text="Update"
+                            TextColor="White"
+                            FontSize="18"
+                            CornerRadius="10"
+                            Padding="30,0,30,0"
+                            BackgroundColor="#1269C8"
+                            Clicked="Button_Clicked" />
+                    </FlexLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

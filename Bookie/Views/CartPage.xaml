@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Bookie.Custom"
+    x:Class="Bookie.Views.CartPage"
+    BackgroundColor="#EFEFEF"
+    Title="Your Cart">
+
+    <ContentPage.Content>
+        <Grid
+            RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition
+                    Height="80" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <CollectionView
+                x:Name="Lst"
+                ItemsSource="{Binding CartList}"
+                Grid.Column="0"
+                Grid.Row="0"
+                SelectionMode="Multiple"
+                SelectionChanged="Book_CheckedChanged">
+
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                Text="No items to display"
+                                TextColor="Black"
+                                Margin="10,25,10,10"
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        Orientation="Vertical"
+                        ItemSpacing="3" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Padding="0"
+                            BackgroundColor="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup
+                                    Name="CommonStates">
+                                    <VisualState
+                                        Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter
+                                                Property="BackgroundColor"
+                                                Value="LightSkyBlue" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState
+                                        Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter
+                                                Property="BackgroundColor"
+                                                Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid
+                                HeightRequest="180">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                                        Width="2*" />
+                                    <ColumnDefinition
+                                        Width="5*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                    Margin="3"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Source="{Binding BookImg}"/>
+                                <FlexLayout
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="5,0,0,0"
+                                    Direction="Column"
+                                    JustifyContent="SpaceBetween">
+                                    <Label
+                                        MaxLines="2"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding BookTitle}"
+                                        FontSize="16"
+                                        FontAttributes="Bold"
+                                        TextColor="Black" />
+                                    <Grid>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition
+                                                Height="30" />
+                                            <RowDefinition
+                                                Height="40" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition
+                                                Width="55" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="Price:"
+                                            FontSize="14"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Text="{Binding BookPrice,StringFormat='${0}'}"
+                                            FontSize="16"
+                                            TextColor="Black" 
+                                            FontAttributes="Bold"/>
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Text="Quantity:"
+                                            FontSize="14"
+                                            TextColor="Black" />
+                                        <FlexLayout
+                                            Grid.ColumnSpan="2"
+                                            Grid.Column="0"
+                                            Grid.Row="2"
+                                            BackgroundColor="Transparent"
+                                            Margin="0,-5,0,0"
+                                            JustifyContent="SpaceBetween">
+                                            <Grid
+                                                Margin="5">
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition
+                                                        Height="30" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition
+                                                        Width="30" />
+                                                    <ColumnDefinition
+                                                        Width="60" />
+                                                    <ColumnDefinition
+                                                        Width="30" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Text="{Binding BookID}"
+                                                    IsVisible="False" />
+                                                <ImageButton
+                                                    Grid.Column="0"
+                                                    Grid.Row="0"
+                                                    Padding="5"
+                                                    Source="minus"
+                                                    BackgroundColor="#EFEFEF"
+                                                    BorderWidth="0.2"
+                                                    BorderColor="#ababab"
+                                                    Clicked="Minus_Clicked" />
+                                                <Label
+                                                    Text="{Binding Quantity}"
+                                                    Grid.Column="1"
+                                                    Grid.Row="0"
+                                                    FontSize="22"
+                                                    TextColor="Black"
+                                                    HorizontalTextAlignment="Center"
+                                                    FontAttributes="Bold"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <ImageButton
+                                                    Padding="7"
+                                                    Grid.Column="2"
+                                                    Grid.Row="0"
+                                                    Source="plus"
+                                                    BackgroundColor="#EFEFEF"
+                                                    BorderWidth="0.2"
+                                                    BorderColor="#ababab"
+                                                    Clicked="Plus_Clicked" />
+                                            </Grid>
+
+                                        </FlexLayout>
+                                        <ImageButton
+                                            Margin="0,0,10,10"
+                                            HorizontalOptions="End"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Grid.Row="3"
+                                            BackgroundColor="Transparent"
+                                            Source="deleteIcon"
+                                            Clicked="deleteCart_Clicked" />
+                                    </Grid>
+                                </FlexLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Frame
+                Grid.Column="0"
+                Grid.Row="1"
+                BorderColor="Black"
+                Margin="-2,0,-2,5"
+                Padding="5">
+                <FlexLayout
+                    Direction="Row"
+                    JustifyContent="SpaceBetween"
+                    Padding="10,0,10,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Text="Total:"
+                            FontSize="20"
+                            TextColor="Black" />
+                        <Label
+                            x:Name="Total"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Text="$0"
+                            FontSize="20"
+                            TextColor="Black" />
+                    </Grid>
+                    <local:myButton
+                        Margin="0,10,0,10"
+                        BackgroundColor="#0069D2"
+                        WidthRequest="100"
+                        x:Name="CheckOut"
+                        Text="Check Out"
+                        TextColor="White"
+                        FontSize="18"
+                        Clicked="CheckOut_Clicked" />
+                </FlexLayout>
+            </Frame>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
