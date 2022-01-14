@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:Bookie.Custom"
+    x:Class="Bookie.Views.CheckOutPage"
+    Shell.TabBarIsVisible="False"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#EFEFEF">
+    <ContentPage.Content>
+        <Frame
+            Margin="10"
+            CornerRadius="15">
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="60" />
+                    <RowDefinition />
+                    <RowDefinition
+                        Height="40" />
+                    <RowDefinition
+                        Height="50" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Your order"
+                    TextColor="Blue"
+                    HorizontalTextAlignment="Center"
+                    FontSize="30" />
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="0">
+                    <Label
+                        Text="Address"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="Black" />
+                    <custom:myEntry
+                        PlaceholderColor="Gray"
+                        Placeholder="Enter here"
+                        TextColor="Black"
+                        x:Name="adr" />
+                    <Label
+                        TextColor="Black"
+                        Text="Included in your order:" />
+                    <Frame
+                        Margin="5">
+                        <CollectionView
+                            x:Name="Lst"
+                            ItemsSource="{Binding carts}"
+                            Grid.Column="0"
+                            Grid.Row="0">
+
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout
+                                    Orientation="Vertical"
+                                    ItemSpacing="3" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid
+                                        HeightRequest="120">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition
+                                                Width="2*" />
+                                            <ColumnDefinition
+                                                Width="5*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image
+                                            Margin="5"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Source="{Binding BookImg}"
+                                            HeightRequest="100" />
+                                        <FlexLayout
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="5,0,0,0"
+                                            Direction="Column">
+                                            <Label
+                                                Text="{Binding BookTitle}"
+                                                MaxLines="2"
+                                                FontAttributes="Bold"
+                                                LineBreakMode="TailTruncation"
+                                                TextColor="Black" />
+                                            <Label
+                                                Margin="0,5,0,0"
+                                                TextColor="Black"
+                                                Text="{Binding Quantity,StringFormat='Quantity: {0}'}" />
+                                        </FlexLayout>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                </StackLayout>
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    FontSize="18"
+                    TextColor="Black"
+                    HorizontalTextAlignment="End"
+                    Text="{Binding Total,StringFormat='Total: ${0}'}" />
+
+                <FlexLayout
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    JustifyContent="SpaceAround"
+                    Direction="Row">
+                    <Button
+                        TextColor="Black"
+                        Text="Cancel"
+                        BorderWidth="0.8"
+                        BorderColor="Gray"
+                        CornerRadius="15"
+                        BackgroundColor="#EFEFEF"
+                        Clicked="Cancel_Clicked"
+                        WidthRequest="120" />
+                    <Button
+                        BackgroundColor="#1269C8"
+                        TextColor="White"
+                        Text="Confirm"
+                        CornerRadius="15"
+                        Clicked="Confirm_Clicked"
+                        WidthRequest="120" />
+
+                </FlexLayout>
+
+            </Grid>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

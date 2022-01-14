@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bookie.Views.MenuPage"
+    xmlns:views="clr-namespace:Bookie.Views"
+    Shell.TabBarTitleColor="Blue"
+    Shell.UnselectedColor="Black"
+    FlyoutBehavior="Disabled"
+    Shell.BackgroundColor="#1399FF"
+    Shell.TabBarBackgroundColor="#DFDFDF">
+
+    <ShellItem
+        Route="login">
+        <ShellContent
+            ContentTemplate="{DataTemplate views:LoginPage}" />
+    </ShellItem>
+    <TabBar
+        Route="main">
+        <ShellContent
+            Title="Home"
+            Icon="homeIcon"
+            Route="home"
+            ContentTemplate="{DataTemplate views:HomePage}">
+
+        </ShellContent>
+        <ShellContent
+            Title="Library"
+            Icon="libraryIcon"
+            Route="library"
+            ContentTemplate="{DataTemplate views:LibraryPage}">
+        </ShellContent>
+        <ShellContent
+            Title="Cart"
+            Icon="storeIcon"
+            Route="cart"
+            ContentTemplate="{DataTemplate views:CartPage}" />
+        <ShellContent
+            Title="More"
+            Icon="moreIcon"
+            Route="more"
+            ContentTemplate="{DataTemplate views:MorePage}" />
+    </TabBar>
+</Shell>

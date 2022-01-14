@@ -11,7 +11,7 @@ namespace Bookie
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new MenuPage();
         }
 
         protected override void OnStart()

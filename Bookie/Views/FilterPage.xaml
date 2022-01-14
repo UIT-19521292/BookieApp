@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bookie.Views.FilterPage"
+    Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <CollectionView
+            x:Name="Src"
+            SelectionMode="Single"
+            SelectionChanged="Book_SelectionChanged">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="3" 
+                    VerticalItemSpacing="10"
+                    HorizontalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <FlexLayout
+                        HeightRequest="240"
+                        Direction="Column"
+                        JustifyContent="SpaceAround">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup
+                                Name="CommonStates">
+                                <VisualState
+                                    Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter
+                                            Property="BackgroundColor"
+                                            Value="Transparent" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState
+                                    Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter
+                                            Property="BackgroundColor"
+                                            Value="Transparent" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Image
+                            HeightRequest="180"
+                            Source="{Binding BookImg}" />
+                        <Label
+                            TextColor="Black"
+                            Text="{Binding BookTitle}"
+                            MaxLines="1"
+                            LineBreakMode="TailTruncation" />
+                        <Label
+                            TextColor="Black"
+                            FontSize="16"
+                            HorizontalTextAlignment="End"
+                            Text="{Binding BookPrice, StringFormat='${0}'}" />
+                    </FlexLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

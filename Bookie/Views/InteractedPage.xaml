@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bookie.Views.InteractedPage"
+    BackgroundColor="#EFEFEF"
+    Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="5">
+            <CollectionView
+                ItemsSource="{Binding InteractedList}"
+                SelectionMode="Single"
+                SelectionChanged="Book_SelectionChanged">
+
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                Text="No items to display"
+                                TextColor="Black"
+                                Margin="10,25,10,10"
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="4" 
+                        VerticalItemSpacing="5"
+                        HorizontalItemSpacing="5"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Image
+                            HeightRequest="140"
+                            Source="{Binding BookImg}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:Bookie.Custom"
+    x:Class="Bookie.Views.OrderDetailPage"
+    Shell.TabBarIsVisible="False"
+    BackgroundColor="#EFEFEF"
+    Title="Oder Detail">
+    <ContentPage.Content>
+        <Frame
+            Margin="10"
+            CornerRadius="15">
+            <FlexLayout
+                Direction="Column"
+                JustifyContent="SpaceBetween">
+                <Label
+                    Text="{Binding OrderID,StringFormat='Order Number: {0}'}"
+                    TextColor="Blue"
+                    HorizontalTextAlignment="Center"
+                    FontSize="30" />
+                <StackLayout>
+                    <Label
+                        TextColor="Black"
+                        Text="{Binding ShipAddress,StringFormat='Address: {0}'}" />
+                    <FlexLayout
+                        Direction="Row">
+                        <Label
+                            TextColor="Black"
+                            Text="Status: " />
+                        <Frame
+                            HasShadow="False"
+                            CornerRadius="40"
+                            Padding="5,0,5,0"
+                            BackgroundColor="{Binding StatusCoverColor}">
+                            <Label
+                                FontAttributes="Bold,Italic"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding StatusTitle}"
+                                TextColor="{Binding StatusTitleColor}" />
+                        </Frame>
+                    </FlexLayout>
+                    <Label
+                        TextColor="Black"
+                        Text="Included in your order:" />
+                    <Frame
+                        Padding="5"
+                        HeightRequest="400">
+                        <CollectionView
+                            x:Name="Lst">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout
+                                    Orientation="Vertical"
+                                    ItemSpacing="3" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid
+                                        HeightRequest="120">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition
+                                                Width="2*" />
+                                            <ColumnDefinition
+                                                Width="5*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image
+                                            Margin="5"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Source="{Binding BookImg}"
+                                            HeightRequest="100" />
+                                        <FlexLayout
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="5,0,0,0"
+                                            Direction="Column">
+                                            <Label
+                                                Text="{Binding BookTitle}"
+                                                MaxLines="2"
+                                                FontAttributes="Bold"
+                                                LineBreakMode="TailTruncation"
+                                                TextColor="Black" />
+                                            <Label
+                                                Margin="0,5,0,0"
+                                                TextColor="Black"
+                                                Text="{Binding Quantity,StringFormat='Quantity: {0}'}" />
+                                        </FlexLayout>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                </StackLayout>
+                <Label
+                    FontSize="20"
+                    TextColor="Black"
+                    HorizontalTextAlignment="End"
+                    Text="{Binding OrderTotal,StringFormat='Total: ${0}'}" />
+                <StackLayout
+                    x:Name="check">
+                    <FlexLayout
+                        JustifyContent="SpaceAround"
+                        Direction="Row">
+                        <custom:myButton
+                            FontSize="16"
+                            TextColor="Black"
+                            Text="Cancel Order"
+                            BorderWidth="0.8"
+                            BorderColor="Gray"
+                            CornerRadius="15"
+                            WidthRequest="120"
+                            Clicked="Cancel_Clicked" />
+                        <custom:myButton
+                            FontSize="16"
+                            BackgroundColor="#1269C8"
+                            TextColor="White"
+                            Text="Confirm Order"
+                            CornerRadius="15"
+                            WidthRequest="120"
+                            Clicked="Delivered_Clicked" />
+                    </FlexLayout>
+                </StackLayout>
+
+            </FlexLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

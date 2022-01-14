@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:Bookie.Custom"
+    x:Class="Bookie.Views.MorePage"
+    Title="More page"
+    BackgroundColor="#EFEFEF">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <custom:myButton
+                Margin="3,5,3,0"
+                BackgroundColor="White"
+                Text="Your Account"
+                TextColor="Black"
+                Clicked="UserDetail_Clicked"/>
+            <custom:myButton
+                Margin="3,0,3,0"
+                TextColor="Black"
+                BackgroundColor="White"
+                Text="Order History"
+                Clicked="OrderHistory_Clicked"/>
+            <custom:myButton
+                Margin="3,0,3,0"
+                TextColor="Black"
+                BackgroundColor="White"
+                Text="Change Password"
+                Clicked="myButton_Clicked"/>
+            <custom:myButton
+                Margin="3,0,3,0"
+                TextColor="Black"
+                BackgroundColor="White"
+                Text="Log out"
+                Clicked="LogOut_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

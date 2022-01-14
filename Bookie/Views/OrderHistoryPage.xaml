@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:Bookie.Custom"
+    x:Class="Bookie.Views.OrderHistoryPage"
+    Title="Order History"
+    BackgroundColor="#EFEFEF"
+    Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                x:Name="test"
+                TextColor="Black" />
+            <custom:myPicker
+                Margin="30,10,30,10"
+                x:Name="pk"
+                Image="ddIcon"
+                Placeholder="All"
+                Title="Select"
+                SelectedIndexChanged="pk_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array
+                        Type="{x:Type x:String}">
+                        <x:String>All</x:String>
+                        <x:String>Pending</x:String>
+                        <x:String>Delivered</x:String>
+                        <x:String>Cancelled</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </custom:myPicker>
+            <Frame
+                Padding="10"
+                Margin="10"
+                CornerRadius="8"
+                HeightRequest="800">
+                <CollectionView
+                    x:Name="src"
+                    HorizontalScrollBarVisibility="Never"
+                    HeightRequest="100"
+                    SelectionMode="Single"
+                    SelectionChanged="src_SelectionChanged">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Vertical"
+                            ItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                BackgroundColor="Transparent"
+                                CornerRadius="10"
+                                Padding="10"
+                                BorderColor="Black">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup
+                                        Name="CommonStates">
+                                        <VisualState
+                                            Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter
+                                                    Property="BackgroundColor"
+                                                    Value="LightSkyBlue" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState
+                                            Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter
+                                                    Property="BackgroundColor"
+                                                    Value="White" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition
+                                            Width="5*" />
+                                        <ColumnDefinition
+                                            Width="15" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <FlexLayout
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Direction="Row">
+                                        <Label
+                                            TextColor="Black"
+                                            Text="{Binding OrderID,StringFormat='Order number: #{0}'}" />
+                                        <Frame
+                                            HasShadow="False"
+                                            CornerRadius="40"
+                                            Padding="5,0,5,0"
+                                            BackgroundColor="{Binding StatusCoverColor}">
+                                            <Label
+                                                FontAttributes="Bold,Italic"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding StatusTitle}"
+                                                TextColor="{Binding StatusTitleColor}" />
+                                        </Frame>
+                                    </FlexLayout>
+                                    <FlexLayout
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Direction="Row">
+                                        <Label
+                                            TextColor="Black"
+                                            Text="Total: " />
+                                        <Label
+                                            TextColor="Black"
+                                            Text="{Binding OrderTotal,StringFormat='${0}'}" />
+                                    </FlexLayout>
+
+                                    <ImageButton
+                                        BackgroundColor="Transparent"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Grid.RowSpan="2"
+                                        Source="arIcon" />
+                                </Grid>
+
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
